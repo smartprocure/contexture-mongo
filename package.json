@@ -4,7 +4,7 @@
   "description": "Mongo Provider for Contexture",
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/_mocha --recursive",
+    "test": "jest --",
     "test:integration": "./node_modules/mocha/bin/_mocha --recursive integration-test/example-types",
     "test:ci": "./node_modules/mocha/bin/_mocha --recursive --reporter json > test-results.json",
     "test-watch": "chokidar 'src/**/*.js' 'test/**/*.js' -c 'npm t'",
@@ -45,18 +45,36 @@
     "moment-timezone": "^0.5.28"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
     "chokidar-cli": "^1.2.0",
     "contexture": "^0.0.4",
     "danger": "^10.5.4",
     "duti": "^0.15.2",
     "eslint": "^4.12.1",
     "eslint-config-smartprocure": "^1.1.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "mingo": "^4.1.2",
-    "mocha": "^3.5.3",
     "mongodb": "^3.5.6",
     "mongodb-memory-server": "^6.5.2",
     "prettier": "^1.8.2"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    }
   },
   "peerDependencies": {
     "mongodb": "^3.5.6"
